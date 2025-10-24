@@ -28,36 +28,40 @@ body {
   background: var(--bg);
 }
 
-/* logo */
-.logo-mark {
-  width: 44px;
-  height: 44px;
-  background: var(--primary-500);
-  border-radius: 10px;
-  box-shadow: 0 6px 18px rgba(35, 28, 50, 0.06);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.logo-mark i {
-  color: var(--white);
-  font-size: 1.5rem;
-}
+.btn-ghost {
+  /* Use CSS variables so the ghost button is always visible.
+     Default: light ghost on light backgrounds. */
+  --ghost-bg: rgba(255,255,255,0.98);
+  --ghost-color: var(--dark);
+  --ghost-border: rgba(35,28,50,0.06);
 
-/* header */
-.site-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(35, 28, 50, 0.04);
+  background: var(--ghost-bg);
+  color: var(--ghost-color);
+  border: 1px solid var(--ghost-border);
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
+  box-shadow: 0 6px 18px rgba(35,28,50,0.04);
 }
-.site-logo {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+.btn-ghost:hover{
+  background: color-mix(in srgb, var(--ghost-bg) 85%, rgba(0,0,0,0.06));
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(35,28,50,0.06);
 }
-.logo-text {
+.btn-ghost:active{ transform: translateY(0); box-shadow: 0 6px 18px rgba(35,28,50,0.04); }
+.btn-ghost:focus-visible{ outline: 3px solid color-mix(in srgb, var(--ghost-border) 60%, transparent); outline-offset: 3px; }
+
+/* On dark backgrounds (hero) switch ghost to a translucent white so it's visible */
+.hero .btn-ghost{
+  --ghost-bg: rgba(255,255,255,0.12);
+  --ghost-color: var(--white);
+  --ghost-border: rgba(255,255,255,0.18);
+}
+.hero .btn-ghost:hover{
+  background: rgba(255,255,255,0.16);
+  transform: translateY(-2px);
+}
   font-weight: 600;
   font-size: 1.25rem;
   cursor: pointer;
