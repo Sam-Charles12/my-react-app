@@ -9,7 +9,7 @@ export default function CTASection() {
           Join thousands of teams managing their tickets with TicketFlow
         </h2>
         <div style={{ marginTop: 18 }}>
-          <button className="btn-ghost" style={{ marginRight: 12 }}>
+          <button className="btn-ghost create-account" style={{ marginRight: 12 }}>
             <i
               className="fa-solid fa-user-plus"
               style={{ marginRight: 8 }}
@@ -17,7 +17,7 @@ export default function CTASection() {
             ></i>
             Create Free Account
           </button>
-          <button className="btn-primary">
+          <button className="btn-primary sign-in">
             Sign In{" "}
             <i
               className="fa-solid fa-arrow-right"

@@ -1,16 +1,17 @@
 /* Design tokens (flattened palette) */
 :root {
-  --dark: #231942;
+  /* blue-forward palette with a teal accent */
+  --dark: #0b1b3a; /* deep navy for headings/hero */
   --black: #000000;
   --white: #ffffff;
-  --primary-500: #5e548e;
-  --primary-600: #9f86c0;
-  --accent: #be95c4;
+  --primary-500: #1e64ff; /* main blue */
+  --primary-600: #2b4dff; /* darker blue */
+  --accent: #00bfa6; /* teal accent */
   --bg: #ffffff;
-  --surface: #fbf7fb;
+  --surface: #f6f9ff;
   --card: #ffffff;
   --text: var(--dark);
-  --muted: #9f86c0;
+  --muted: #6b82b9;
 }
 
 /* global container */
@@ -28,40 +29,36 @@ body {
   background: var(--bg);
 }
 
-.btn-ghost {
-  /* Use CSS variables so the ghost button is always visible.
-     Default: light ghost on light backgrounds. */
-  --ghost-bg: rgba(255,255,255,0.98);
-  --ghost-color: var(--dark);
-  --ghost-border: rgba(35,28,50,0.06);
+/* logo */
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  background: var(--primary-500);
+  border-radius: 10px;
+  box-shadow: 0 6px 18px rgba(35, 28, 50, 0.06);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.logo-mark i {
+  color: var(--white);
+  font-size: 1.5rem;
+}
 
-  background: var(--ghost-bg);
-  color: var(--ghost-color);
-  border: 1px solid var(--ghost-border);
-  padding: 0.6rem 1rem;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background 160ms ease, color 160ms ease, transform 160ms ease, box-shadow 160ms ease;
-  box-shadow: 0 6px 18px rgba(35,28,50,0.04);
+/* header */
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(35, 28, 50, 0.04);
 }
-.btn-ghost:hover{
-  background: color-mix(in srgb, var(--ghost-bg) 85%, rgba(0,0,0,0.06));
-  transform: translateY(-2px);
-  box-shadow: 0 12px 30px rgba(35,28,50,0.06);
+.site-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
 }
-.btn-ghost:active{ transform: translateY(0); box-shadow: 0 6px 18px rgba(35,28,50,0.04); }
-.btn-ghost:focus-visible{ outline: 3px solid color-mix(in srgb, var(--ghost-border) 60%, transparent); outline-offset: 3px; }
-
-/* On dark backgrounds (hero) switch ghost to a translucent white so it's visible */
-.hero .btn-ghost{
-  --ghost-bg: rgba(255,255,255,0.12);
-  --ghost-color: var(--white);
-  --ghost-border: rgba(255,255,255,0.18);
-}
-.hero .btn-ghost:hover{
-  background: rgba(255,255,255,0.16);
-  transform: translateY(-2px);
-}
+.logo-text {
   font-weight: 600;
   font-size: 1.25rem;
   cursor: pointer;
@@ -157,7 +154,7 @@ body {
 }
 .wave-svg {
   width: 100%;
-  height: 250px;
+  height: 300px;
   display: block;
 }
 .cta-row {
@@ -165,7 +162,6 @@ body {
   display: flex;
   gap: 12px;
 }
-
 /* buttons */
 .btn-primary {
   background: var(--primary-500);
@@ -211,6 +207,15 @@ body {
 .btn-ghost:focus-visible {
   outline: 3px solid rgba(94, 84, 142, 0.12);
   outline-offset: 3px;
+}
+.create-account {
+  background: linear-gradient(90deg, var(--primary-600) 0%, var(--accent) 100%);
+  color: var(--white);
+  transition: 0.5s ease-in-out;
+}
+.create-account:hover {
+  background: var(--surface);
+  transition: 0.5s ease-in-out;
 }
 
 /* ensure ghost on dark hero remains visible */
@@ -262,11 +267,12 @@ body {
   width: 44px;
   height: 44px;
   border-radius: 8px;
-  background: rgba(94, 84, 142, 0.06);
+  background: rgba(30, 88, 255, 0.06);
   display: inline-flex;
   align-items: center;
   justify-content: center;
   margin-bottom: 10px;
+  color: var(--primary-600);
 }
 
 /* why choose */
@@ -296,7 +302,7 @@ body {
   gap: 10px;
 }
 .check-list li {
-  background: rgba(159, 134, 192, 0.06);
+  background: rgba(30, 88, 255, 0.06);
   padding: 12px 16px;
   border-radius: 10px;
 }
@@ -350,7 +356,7 @@ body {
 .footer-col ul li {
   line-height: 30px;
 }
-.footer-icon{
+.footer-icon {
   display: flex;
   gap: 12px;
   font-size: 1.1rem;
@@ -373,5 +379,97 @@ body {
   }
   .hero-content {
     padding-bottom: 2rem;
+  }
+}
+
+/* Laptop / smaller-desktop adjustments */
+@media (max-width: 1280px) {
+  .site-inner {
+    padding: 1.5rem;
+  }
+  .hero-content {
+    /* reduce the right column on smaller laptops */
+    grid-template-columns: 1fr 360px;
+    gap: 1.25rem;
+    padding: 1.75rem 0 5.5rem 0;
+  }
+  .visual-circle {
+    width: 140px;
+    height: 140px;
+  }
+}
+
+/* Tablet polish */
+@media (max-width: 980px) {
+  .site-inner {
+    padding: 1.25rem;
+  }
+  .site-header {
+    padding: 6px 0;
+  }
+  .site-nav {
+    gap: 8px;
+  }
+  .hero {
+    padding: 3.25rem 0 0 0;
+  }
+  .hero-content {
+    padding: 1.5rem 0 4rem 0;
+    grid-template-columns: 1fr;
+  }
+  .features {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.9rem;
+  }
+  .choose-inner {
+    grid-template-columns: 1fr;
+    padding: 20px;
+  }
+}
+
+/* Mobile adjustments */
+@media (max-width: 560px) {
+  .site-inner {
+    padding: 1rem;
+  }
+  .site-logo .logo-text {
+    font-size: 1rem;
+  }
+  .site-nav {
+    gap: 6px;
+    align-items: center;
+  }
+  .hero {
+    border-radius: 8px;
+    padding: 2rem 0 0 0;
+  }
+  .hero-content {
+    grid-template-columns: 1fr;
+    padding: 1rem 0 2.25rem 0;
+  }
+  .visual-circle {
+    width: 96px;
+    height: 96px;
+    border-width: 4px;
+  }
+  .cta-row {
+    flex-direction: column;
+    gap: 10px;
+  }
+  .btn-primary,
+  .btn-ghost {
+    width: 100%;
+    max-width: 420px;
+  }
+  .feature-box {
+    padding: 1rem;
+  }
+  .feature-icon {
+    width: 40px;
+    height: 40px;
+  }
+  .footer-inner {
+    flex-direction: column;
+    gap: 12px;
   }
 }
